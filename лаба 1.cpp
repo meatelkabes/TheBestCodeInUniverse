@@ -1,41 +1,37 @@
-﻿/*************************
-* Автор: Карнаухов Ф.А   *
-* Дата:19.09.26          *
-* Название: Лаба 1       *
-* Вариант: 3             *
-*************************/
+﻿/********************************
+* Автор: Карнаухов Фёдор        *        
+* Название: Линейные алгоритмы  *
+* Вариант: 3                    *
+********************************/
 
 #include <iostream>
 #include <math.h>
-
+using namespace std;
 int main() {
 
 	const double PI = 3.141592;
-	double alpha, initial_velocity, acceleration, RadianAlpha, flight_time, Maximum_Flight_Height, Maximum_Flight_Range, Radius_of_Curvature_of_the_Start_of_the_Trajectory, Radius_of_curvature_of_the_vertex_Trajectories;
+	double alpha, initialVelocity, acceleration;
 
-	std :: cout << "alpha = ";
-	std::cin >> alpha;
+	cout << "alpha = ";
+	cin >> alpha;
+	cout << "initial_velocity = ";
+	cin >> initialVelocity;
+	cout << "acceleration = ";
+	cin >> acceleration;
 
-	std::cout << "initial_velocity = ";
-	std::cin >> initial_velocity;
+	double radianAlpha = alpha * PI / 180;
+	double flightTime = (2 * initialVelocity * sin(radianAlpha) / acceleration);
+	double maximumFlightHeight = (pow(initialVelocity, 2) * pow(sin(radianAlpha), 2)) / (2 * acceleration);
+	double maximumFlightRange = (pow(initialVelocity, 2) * sin(2 * radianAlpha)) / (acceleration);
+	double radiusOfCurvatureOfTheStartOfTheTrajectory = (pow(initialVelocity, 2)) / (acceleration * cos(radianAlpha));
+	double radiusOfCurvatureOfTheVertexTrajectories = (pow(initialVelocity, 2) * pow(cos(radianAlpha), 2)) / acceleration;
 
-	std::cout << "acceleration = ";
-	std::cin >> acceleration;
-
-	RadianAlpha = alpha * PI / 180;
-
-	flight_time = (2 * initial_velocity * sin(RadianAlpha) / acceleration);
-	Maximum_Flight_Height = (pow(initial_velocity, 2) * pow(sin(RadianAlpha), 2)) / (2 * acceleration);
-	Maximum_Flight_Range = (pow(initial_velocity, 2) * sin(2 * RadianAlpha)) / (acceleration);
-	Radius_of_Curvature_of_the_Start_of_the_Trajectory = (pow(initial_velocity, 2)) / (acceleration * cos(RadianAlpha));
-	Radius_of_curvature_of_the_vertex_Trajectories = (pow(initial_velocity, 2) * pow(cos(RadianAlpha), 2)) / acceleration;
-
-	std::cout << "--------------------------------------------------------------------------------- " << std::endl;
-	std::cout << "Flight_Time = " << flight_time << std :: endl;
-	std::cout << "Maximum_Flight_Height = " << Maximum_Flight_Height << std::endl;
-	std::cout << "Maximum_Flight_Range = " << Maximum_Flight_Range << std::endl;
-	std::cout << "Radius_of_Curvature_of_the_Start_of_the_Trajectory = " << Radius_of_Curvature_of_the_Start_of_the_Trajectory << std::endl;
-	std::cout << "Radius_of_curvature_of_the_vertex_Trajectories = " << Radius_of_curvature_of_the_vertex_Trajectories << std::endl;
+	cout << "--------------------------------------------------------------------------------- " << endl
+	     << "flight time = " << flightTime << endl
+	     << "maximum flight height = " << maximumFlightHeight << endl
+	     << "maximum flight range = " << maximumFlightRange << endl
+	     << "radius of curvature of the start of the trajectory = " << radiusOfCurvatureOfTheStartOfTheTrajectory << endl
+	     << "radius of curvature of the vertex trajectories = " << radiusOfCurvatureOfTheVertexTrajectories << endl;
 
 
 }
